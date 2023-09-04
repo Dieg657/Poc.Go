@@ -1,0 +1,87 @@
+basePath: /api/v1
+definitions:
+  dtos.Employee:
+    properties:
+      Id:
+        type: integer
+      company:
+        type: string
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      link:
+        type: string
+      location:
+        type: string
+      remote:
+        type: boolean
+      role:
+        type: string
+      salary:
+        type: number
+      updatedAt:
+        type: string
+    type: object
+  dtos.EmployeeAddModel:
+    properties:
+      company:
+        type: string
+      link:
+        type: string
+      location:
+        type: string
+      remote:
+        type: boolean
+      role:
+        type: string
+      salary:
+        type: number
+    type: object
+host: http://localhost:8080
+info:
+  contact:
+    email: dieg657@gmail.com
+    name: Diego dos Santos Soares
+    url: http://www.diegosoares.dev.br
+  description: WebAPI in Golang for educational purposes
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Golang WebAPI POC
+  version: "1.0"
+paths:
+  /employee:
+    get:
+      description: List of employees
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dtos.Employee'
+            type: array
+      summary: Get all persisted employees on database
+      tags:
+      - employee
+    post:
+      description: Add employee to database
+      parameters:
+      - description: Employee Form Data
+        in: body
+        name: employeeModel
+        schema:
+          $ref: '#/definitions/dtos.EmployeeAddModel'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Insert employee
+      tags:
+      - employee
+swagger: "2.0"
