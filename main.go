@@ -17,7 +17,7 @@ import (
 //	@license.name	Apache 2.0
 //	@license.url	http://www.apache.org/licenses/LICENSE-2.0.html
 
-// @Host		http://localhost:8080
+// @Host		localhost:8080
 // @BasePath	/api/v1
 func main() {
 	webApi := web.WebApi{}

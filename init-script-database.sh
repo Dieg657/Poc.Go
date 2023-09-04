@@ -1,2 +1,1 @@
-/opt/mssql-tools/bin/sqlcmd -S sqlserver-poc -U sa -P master.007,01 -d master -i /tmp/create-database-sql-server.sql
-/opt/mssql-tools/bin/sqlcmd -S sqlserver-poc -U sa -P master.007,01 -d master -i /tmp/insert-values-sql-server.sql
+/opt/mssql-tools/bin/sqlcmd -S sqlserver-poc -U sa -P master.007,01 -d master -i /tmp/init-database-sql-server.sql

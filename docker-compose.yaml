@@ -1,7 +1,7 @@
 version: '3'
 services:
   sqlserver-poc:
-    image: mcr.microsoft.com/mssql/server:2022-latest
+    image: mcr.microsoft.com/mssql/server:2019-latest
     ports:
       - 1433:1433
     environment:
@@ -12,25 +12,24 @@ services:
   mssqltools-poc:
     image: mcr.microsoft.com/mssql-tools
     volumes:
-      - ./create-database-sql-server.sql:/tmp/create-database-sql-server.sql
-      - ./insert-values-sql-server.sql:/tmp/insert-values-sql-server.sql
+      - ./init-database-sql-server.sql:/tmp/init-database-sql-server.sql
       - ./init-script-database.sh:/tmp/init-script-database.sh
     command: /bin/bash ./tmp/init-script-database.sh
     depends_on:
       - sqlserver-poc
     networks:
       - backend
-  # poc-go:
-  #   build: .
-  #   ports:
-  #     - 8080:8080
-  #   environment:
-  #     MSSQL: "sqlserver://sa:master.007,01@sqlserver-poc:1433?database=POC"
-  #   depends_on:
-  #     - sqlserver-poc
-  #     - mssqltools-poc
-  #   restart: unless-stopped
-  #   networks:
-  #     - backend
+  poc-go:
+    build: .
+    ports:
+      - 8080:8080
+    environment:
+      MSSQL: "sqlserver://sa:master.007,01@sqlserver-poc:1433?database=POC"
+    depends_on:
+      - mssqltools-poc
+      - sqlserver-poc
+    restart: unless-stopped
+    networks:
+      - backend
 networks:
   backend:

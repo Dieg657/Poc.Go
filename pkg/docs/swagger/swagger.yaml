@@ -38,7 +38,7 @@ definitions:
       salary:
         type: number
     type: object
-host: http://localhost:8080
+host: localhost:8080
 info:
   contact:
     email: dieg657@gmail.com

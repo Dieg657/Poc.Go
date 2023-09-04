@@ -9,6 +9,7 @@ import (
 	"github.com/Dieg657/Poc.Go/pkg/docs/swagger"
 	"github.com/Dieg657/Poc.Go/pkg/repositories"
 	"github.com/Dieg657/Poc.Go/pkg/services"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -40,7 +41,7 @@ func (webapi *WebApi) Start(ctx context.Context) {
 		return
 	}
 
-	// 4 - Initialize controller
+	// 4 - Initialize router and controller
 	employeeController := controller.EmployeeController{}
 	router := gin.Default()
 	v1 := router.Group("/api/v1")
@@ -48,6 +49,8 @@ func (webapi *WebApi) Start(ctx context.Context) {
 	if err != nil {
 		return
 	}
+
+	router.Use(cors.Default())
 
 	// 5 - Register Routes
 	employeeController.RegisterRoutes()
