@@ -34,7 +34,7 @@ func (controller *EmployeeController) RegisterRoutes() {
 	controller.GetAllEmployees()
 }
 
-// @BasePath /api/v1/employee
+// @BasePath /api/v1
 // @Tags employee
 // @Summary Insert employee
 // @Schemes
@@ -54,7 +54,7 @@ func (controller *EmployeeController) PostEmployee() {
 	})
 }
 
-// @BasePath /api/v1/employee
+// @BasePath /api/v1
 // @Tags employee
 // @Summary Get all persisted employees on database
 // @Schemes
