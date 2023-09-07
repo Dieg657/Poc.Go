@@ -1,6 +1,6 @@
 # Golang WebAPI por Educational Purposes
 
-This application is made to learnt how implements with Golang a simple Web API using Gin-Gonic, Swagger, GORM.
+This application was made to learnt how implements with Golang a simple Web API using Gin-Gonic, Swagger, GORM.
 
 # How to use?
 
