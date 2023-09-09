@@ -23,7 +23,14 @@ func (mssqlAdapter *MssqlDatabaseAdapter) New(connectionString string) error {
 		return err
 	}
 
+	defer mssqlAdapter.Close()
+
 	return err
+}
+
+func (mssqlAdapter *MssqlDatabaseAdapter) Close() {
+	dbInstance, _ := mssqlAdapter.database.DB()
+	_ = dbInstance.Close()
 }
 
 func (mssqlAdapter *MssqlDatabaseAdapter) GetDatabase() *gorm.DB {

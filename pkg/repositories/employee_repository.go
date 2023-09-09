@@ -23,7 +23,7 @@ func (er *EmployeeRepository) New(databaseAdapter db.IDatabaseAdapter) error {
 
 func (er *EmployeeRepository) Add(model *dtos.EmployeeAddModel) bool {
 
-	er.dbAdapter.GetDatabase().Omit("UpdatedAt", "DeletedAt").Create(model)
+	er.dbAdapter.GetDatabase().Omit("UpdatedAt", "DeletedAt").Table("Employees").Create(model)
 
 	return true
 }
